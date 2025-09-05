@@ -1,7 +1,10 @@
 from scraper import Scraper
+from llm import llm
 
 if __name__ == '__main__':
     scraper = Scraper()
+    llm = llm()
+
     scraper.OpenPage('https://www.moodle.aau.dk/course/view.php?id=56718')
 
     input("Press Enter when logged in...")
@@ -14,5 +17,7 @@ if __name__ == '__main__':
         print(lecture_count)
         print(lecture_text)
         lecture_count += 1
+
+        llm.prompt("If there are any exercises in the following text, please list them, and answer them: " + lecture_text)
 
     input()
